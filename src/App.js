@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import React from 'react'
+import ServiceList from './Components/ServiceList';
+import AddNewServices from "./Components/AddNewServices";
+import ServiceProvider from "./Components/Store/ServiceProvider";
+import {  Route, Routes } from "react-router-dom";
+import UpdateServices from "./Components/UpdateServices";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ServiceProvider>
+          <Routes>
+            <Route exact path="/"  element={<ServiceList />} />
+            <Route exact path="/AddNewServices" element={<AddNewServices/>} />
+            <Route exact path="/updateServices/:id" element={<UpdateServices/>} />
+          </Routes>
+    </ServiceProvider>
+  )
 }
 
-export default App;
+export default App
